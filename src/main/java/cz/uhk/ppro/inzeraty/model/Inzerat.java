@@ -1,8 +1,7 @@
 package cz.uhk.ppro.inzeraty.model;
 
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.UUID;
+import java.time.LocalDate;
 
 public class Inzerat {
     private int id;
@@ -10,20 +9,17 @@ public class Inzerat {
     private String text;
     private BigDecimal cena;
     private String hesloProUpravu;
-    private Date datum;
+    private LocalDate datum;
 
-    public Inzerat() {
-        hesloProUpravu = UUID.randomUUID().toString().substring(0, 6);
-        datum = new Date();
-    }
-
-    public Inzerat(int id, String kategorie, String text, BigDecimal cena, String hesloProUpravu, Date datum) {
+    public Inzerat(int id, String kategorie, String text, BigDecimal cena, LocalDate datum) {
         this.id = id;
         this.kategorie = kategorie;
         this.text = text;
         this.cena = cena;
-        this.hesloProUpravu = hesloProUpravu;
         this.datum = datum;
+    }
+
+    public Inzerat() {
     }
 
     public int getId() {
@@ -66,11 +62,11 @@ public class Inzerat {
         this.hesloProUpravu = hesloProUpravu;
     }
 
-    public Date getDatum() {
+    public LocalDate getDatum() {
         return datum;
     }
 
-    public void setDatum(Date datum) {
+    public void setDatum(LocalDate datum) {
         this.datum = datum;
     }
 
@@ -135,6 +131,5 @@ public class Inzerat {
                 + text + ", cena=" + cena + ", hesloProUpravu="
                 + hesloProUpravu + ", datum=" + datum + "]";
     }
-
 
 }

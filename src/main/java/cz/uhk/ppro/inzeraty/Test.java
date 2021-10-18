@@ -1,4 +1,4 @@
-package cz.uhk.ppro.inzeraty.app;
+package cz.uhk.ppro.inzeraty;
 
 import cz.uhk.ppro.inzeraty.model.Inzerat;
 import cz.uhk.ppro.inzeraty.sluzby.PametoveUlozisteInzeratu;
@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class Test implements WebMvcConfigurer {
@@ -25,10 +28,11 @@ public class Test implements WebMvcConfigurer {
     @Primary
     UlozisteInzeratu getInzeraty() {
         UlozisteInzeratu k = new PametoveUlozisteInzeratu();
-        k.pridej(new Inzerat(1, "Nákup", "Koupím auto", 150000, "123456", tttt));
-        k.pridej(new Inzerat(2, "Nákup", "Koupím stůl", 5000, "15948", "15.4.2020"));
-        k.pridej(new Inzerat(3, "Prodej", "Prodám židli", 800, "78945", "16.2.2005"));
-        k.pridej(new Inzerat(4, "Výměna", "Vyměním kolo za jiné kolo", 8500, "45689", "8.5.2021"));
+        k.pridej(new Inzerat(1, "Nákup", "Koupím kolo", new BigDecimal(5000.00), LocalDate.now()));
+        k.pridej(new Inzerat(1, "Nákup", "Koupím auto", new BigDecimal(150000.00), LocalDate.now()));
+        k.pridej(new Inzerat(2, "Nákup", "Koupím stůl", new BigDecimal(300.00), LocalDate.now()));
+        k.pridej(new Inzerat(3, "Prodej", "Prodám židli", new BigDecimal(400.00), LocalDate.now()));
+        k.pridej(new Inzerat(4, "Výměna", "Vyměním kolo za jiné kolo", new BigDecimal(5000.00), LocalDate.now()));
         return k;
     }
 }
